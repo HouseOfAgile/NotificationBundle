@@ -10,7 +10,7 @@ use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Bridge\Monolog\Logger;
 
-class MemberNotificationListener extends NotificationListener {
+class ExampleNotificationListener extends NotificationListener {
 
     private static $emailTemplates = array(
         HOANotificationEvents::BETA_REGISTER_COMPLETED=> "HoaNotificationBundle:Mails/Register:betaRegister.html.twig",
