@@ -1,7 +1,7 @@
 parameters:
-    hoa.notification_service.class: Hoa\Bundle\NotificationBundle\Services\NotificationService
-    hoa.twilio_service.class: Hoa\Bundle\NotificationBundle\Services\TwilioService
-    hoa.mailer_service.class: Hoa\Bundle\NotificationBundle\Services\MailerService
+    hoa.notification_service.class: HOA\Bundle\NotificationBundle\Services\NotificationService
+    hoa.twilio_service.class: HOA\Bundle\NotificationBundle\Services\TwilioService
+    hoa.mailer_service.class: HOA\Bundle\NotificationBundle\Services\MailerService
 
 services:
     hoa.twilio.api:

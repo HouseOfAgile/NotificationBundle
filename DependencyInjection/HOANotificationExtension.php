@@ -27,6 +27,8 @@ class HOANotificationExtension extends Extension
         if (isset($config['sms_service'])) {
             $container->setParameter('hoa_notification.sms_service',$config['sms_service']);
         }
+        $container->setParameter('hoa_notification.mailer_service.hoa_from_email', $config['mailer_service']['hoa_from_email']);
+        $container->setParameter('hoa_notification.mailer_service.hoa_bcc_email', $config['mailer_service']['hoa_bcc_email']);
 
         $loader->load('services.yml');
     }

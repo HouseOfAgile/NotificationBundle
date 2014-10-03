@@ -1,10 +1,10 @@
 parameters:
-    hoa.listener.example.class: Hoa\Bundle\NotificationBundle\EventListener\ExampleNotificationListener
+    hoa.listener.example.class: HOA\Bundle\NotificationBundle\EventListener\ExampleNotificationListener
 
 services:
 
     hoa.listener.example:
-        class: "%hoa.listener.beta_register.class%"
+        class: "%hoa.listener.example.class%"
         tags:
           - { name: kernel.event_subscriber }
         arguments: [ "@hoa.mailer", "@hoa.twilio.api", "@hoa.notification", "@logger"]
