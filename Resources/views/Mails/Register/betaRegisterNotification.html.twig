@@ -1,0 +1,18 @@
+{% extends 'HoaNotificationBundle:Mails:layoutMail.html.twig' %}
+{% trans_default_domain 'HoaNotification' %}
+
+{% block subject %}
+    {{ 'hoa.beta_register.new-member'|trans() }}
+{% endblock %}
+
+{% block body_text %}
+    {% autoescape false %}
+    {{ 'hoa.beta_register.member.body.plain'|trans() }}
+    {% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+    <p>Popopo,</p>
+    <p>Someone want to join the beta !!!</p>
+    <p>betamail: {{ newMember.email }} </p>
+{% endblock %}

@@ -23,6 +23,11 @@ class HOANotificationExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+
+        if (isset($config['sms_service'])) {
+            $container->setParameter('hoa_notification.sms_service',$config['sms_service']);
+        }
+
         $loader->load('services.yml');
     }
 }

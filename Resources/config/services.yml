@@ -1,2 +1,12 @@
+parameters:
+    hoa.notification_service.class: Hoa\Bundle\NotificationBundle\Services\NotificationService
+    hoa.twilio_service.class: Hoa\Bundle\NotificationBundle\Services\TwilioService
+    hoa.mailer_service.class: Hoa\Bundle\NotificationBundle\Services\MailerService
 services:
+    hoa.twilio.api:
+        class: %hoa.twilio_service.class%
+        arguments: [ "@service_container","@twig" ]
 
+    hoa.mailer:
+      class: %hoa.mailer_service.class%
+      arguments: ["@mailer", "@twig", "%hoa_notification.mailer_service.hoa_from_email%","%hoa_notification.mailer_service.hoa_bcc_email%"]

@@ -19,7 +19,32 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('hoa_notification');
-
+        $rootNode
+            ->children()
+                ->arrayNode('sms_service')
+                    ->children()
+                        ->booleanNode('active')
+                        ->defaultTrue()
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('mailer_service')
+                    ->children()
+                        ->booleanNode('active')
+                            ->defaultTrue()
+                        ->end()
+                        ->scalarNode('hoa_from_email')
+                            ->defaultValue(null)
+                            ->cannotBeEmpty()
+                        ->end()
+                        ->scalarNode('hoa_bcc_email')
+                            ->defaultValue(null)
+                            ->cannotBeEmpty()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ->end();
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
         // more information on that topic.
