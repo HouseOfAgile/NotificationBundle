@@ -29,7 +29,7 @@
             "HouseOfAgile\\NotificationBundle" : ""
         }
     },
-    "target-dir" : "HOA/NotificationBundle",
+    "target-dir" : "HOA/Bundle/NotificationBundle",
     "repositories" : [{}],
     "extra" : {
         "branch-alias" : {
