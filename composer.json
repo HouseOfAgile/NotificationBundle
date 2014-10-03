@@ -1,0 +1,38 @@
+{
+    "name": "houseofagile/notification-bundle",
+    "description" : "A Notification bundle",
+    "type" : "symfony-bundle",
+    "authors": [
+        {
+            "name": "Jean-Christophe Meillaud",
+            "email": "jc@houseofagile.com",
+            "homepage": "http://www.houseofagile.com",
+            "role": "Lead Maintainer"
+        },
+        {
+            "name": "Pablo Martelletti",
+            "email": "pmartelletti@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "keywords" : [
+        "notification bundle", "mailer bundle"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+    },
+    "autoload" : {
+        "psr-0" : {
+            "HouseOfAgile\\NotificationBundle" : ""
+        }
+    },
+    "target-dir" : "HouseOfAgile/NotificationBundle",
+    "repositories" : [{}],
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "1.0-dev"
+        }
+    }
+}
