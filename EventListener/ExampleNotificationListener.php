@@ -6,9 +6,6 @@ namespace HOA\Bundle\NotificationBundle\EventListener;
 
 use HOA\Bundle\NotificationBundle\Event\NotificationEventInterface;
 use HOA\Bundle\NotificationBundle\HOANotificationEvents;
-use Symfony\Component\EventDispatcher\Event;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Bridge\Monolog\Logger;
 
 class ExampleNotificationListener extends NotificationListener {
 

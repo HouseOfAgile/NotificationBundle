@@ -32,7 +32,7 @@ class MailerService
         /* @var $template \Twig_Template */
         $context = array_merge($template->getEnvironment()->getGlobals(), $this->twig->mergeGlobals($context));
         $subject = $template->renderBlock('subject', $context);
-        $textBody = $template->renderBlock('body_text', $context);
+        $template->renderBlock('body_text', $context);
         $htmlBody = $template->renderBlock('body_html', $context);
 
         $message = \Swift_Message::newInstance()
