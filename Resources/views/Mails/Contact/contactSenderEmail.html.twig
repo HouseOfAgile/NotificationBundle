@@ -1,0 +1,22 @@
+{% extends 'HOANotificationBundle:Mails:layoutMail.html.twig' %}
+{% trans_default_domain 'HOANotification' %}
+
+{% block subject %}
+    {{ 'hoa.new_contact.subject'|trans() }}
+{% endblock %}
+
+{% block body_text %}
+    {% autoescape false %}
+    {{ 'hoa.new_contact.new_member_body_plain'|trans() }}
+    {% endautoescape %}
+{% endblock %}
+
+{% block body_html %}
+    <p>{{ 'hoa.new_contact.you_have_a_new_message'|trans() }},</p>
+    <p>{{ 'hoa.new_contact.category'|trans() }}:{{ event.category }}</p>
+    <p>{{ 'hoa.new_contact.email'|trans() }}:<b>{{ event.email }}</b></p>
+    <p>{{ 'hoa.new_contact.email'|trans() }}:{{ event.category }}</p>
+    <div style="font-family: Georgia, serif;font-size: 18px;font-style: italic;margin: 0.25em 0;padding: 0.25em 40px;line-height: 1.45;position: relative;color: #383838;">
+        {{ event.message|raw }}
+    </div>
+{% endblock %}
