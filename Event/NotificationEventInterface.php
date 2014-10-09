@@ -7,10 +7,13 @@ interface NotificationEventInterface {
 
     public function getEventContext();
 
-        /**
-     * Should return a User Object with phone and email at least
+    /**
+     * Should return a User Object with phone and email at least,otherwise you have to manage ur business logic
      * @return mixed
      */
     public function getNotificationOwner();
+
+    /* return the mail address to use in order to send mail notification */
+    public function getMail();
 
 }
