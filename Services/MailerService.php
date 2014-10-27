@@ -19,6 +19,22 @@ class MailerService
         $this->bccEmail = $bccEmail;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getBccEmail()
+    {
+        return $this->bccEmail;
+    }
+
+    /**
+     * @param mixed $bccEmail
+     */
+    public function setBccEmail($bccEmail)
+    {
+        $this->bccEmail = $bccEmail;
+    }
+
 
     /**
      * @param string $renderedTemplate
@@ -28,7 +44,6 @@ class MailerService
     public function sendMessage($templateName, $context, $toEmail)
     {
         $template = $this->twig->loadTemplate($templateName);
-
         /* @var $template \Twig_Template */
         $context = array_merge($template->getEnvironment()->getGlobals(), $this->twig->mergeGlobals($context));
         $subject = $template->renderBlock('subject', $context);
