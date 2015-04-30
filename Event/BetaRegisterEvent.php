@@ -21,5 +21,19 @@ class BetaRegisterEvent extends Event implements NotificationEventInterface {
     {
         return $this->getEventContext();
     }
+    /**
+     * @return mixed
+     */
+    public function getMail()
+    {
+        return $this->getEventContext()->getMail();
+    }
 
+    /**
+     * @param mixed $mail
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+    }
 }

@@ -24,8 +24,12 @@ class HOANotificationExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        if (isset($config['sms_service'])) {
-            $container->setParameter('hoa_notification.sms_service',$config['sms_service']);
+        if (isset($config['sms_service']['active']) && $config['sms_service']['active'] ) {
+            $container->setParameter('hoa_notification.sms_service.active',$config['sms_service']['active']);
+            $container->setParameter('hoa_notification.sms_service.twilio',$config['sms_service']['twilio']);
+        }else {
+            $container->setParameter('hoa_notification.sms_service.active',false);
+            $container->setParameter('hoa_notification.sms_service.twilio',null);
         }
         $container->setParameter('hoa_notification.mailer_service.hoa_from_email', $config['mailer_service']['hoa_from_email']);
         $container->setParameter('hoa_notification.mailer_service.hoa_bcc_email', $config['mailer_service']['hoa_bcc_email']);

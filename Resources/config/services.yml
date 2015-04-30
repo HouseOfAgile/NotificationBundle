@@ -6,7 +6,7 @@ parameters:
 services:
     hoa.twilio.api:
         class: %hoa.twilio_service.class%
-        arguments: [ "%twilio%","@twig", "%send_sms%" ]
+        arguments: [ "%hoa_notification.sms_service.twilio%","@twig", "%hoa_notification.sms_service.active%" ]
 
     hoa.mailer:
       class: %hoa.mailer_service.class%
