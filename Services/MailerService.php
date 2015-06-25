@@ -5,6 +5,9 @@ namespace HOA\Bundle\NotificationBundle\Services;
 
 class MailerService
 {
+    /**
+     * @var \Swift_Mailer
+     */
     protected $mailer;
     protected $twig;
 
@@ -40,8 +43,9 @@ class MailerService
      * @param string $renderedTemplate
      * @param string $fromEmail
      * @param string $toEmail
+     * @param array $mailAttachments
      */
-    public function sendMessage($templateName, $context, $toEmail)
+    public function sendMessage($templateName, $context, $toEmail,array $mailAttachments=null)
     {
         $template = $this->twig->loadTemplate($templateName);
         /* @var $template \Twig_Template */
@@ -50,7 +54,8 @@ class MailerService
         $template->renderBlock('body_text', $context);
         $htmlBody = $template->renderBlock('body_html', $context);
 
-        $message = \Swift_Message::newInstance()
+        $swiftInstance=\Swift_Message::newInstance();
+        $message = $swiftInstance
             ->setSubject($subject)
             ->setFrom($this->fromEmail)
             ->setTo($toEmail)
@@ -59,6 +64,11 @@ class MailerService
                 $this->twig->render(
                     $templateName, $context))
         ;
+        if ($mailAttachments!=null) {
+            foreach ($mailAttachments as $mailAttachment) {
+                $swiftInstance->attach($mailAttachment);
+            }
+        }
         if (isset($this->bccEmail)) {
             $message->addBcc($this->bccEmail);
         }
