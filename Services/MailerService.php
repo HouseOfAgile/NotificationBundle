@@ -42,7 +42,7 @@ class MailerService
      * @param string $toEmail
      * @param array $mailAttachments (list of stwiftmail attachments
      */
-    public function sendMessage($templateName, $context, $toEmail,$mailAttachments=array())
+    public function sendMessage($templateName, $context, $toEmail,array $mailAttachments=null)
     {
         $template = $this->twig->loadTemplate($templateName);
         /* @var $template \Twig_Template */
@@ -63,7 +63,7 @@ class MailerService
         if (isset($this->bccEmail)) {
             $message->addBcc($this->bccEmail);
         }
-        if (count($mailAttachments)>0) {
+        if ($mailAttachments!=null and count($mailAttachments)>0) {
             foreach ($mailAttachments as $mailAttachment){
                 $message->attach($mailAttachment);
             }
