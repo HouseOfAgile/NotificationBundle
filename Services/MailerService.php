@@ -3,7 +3,7 @@
 namespace HOA\Bundle\NotificationBundle\Services;
 
 
-class MailerService
+class MailerService implements \Twig_Extension_GlobalsInterface
 {
     /**
      * @var \Swift_Mailer
@@ -45,25 +45,29 @@ class MailerService
      * @param string $toEmail
      * @param array $mailAttachments
      */
-    public function sendMessage($templateName, $context, $toEmail,array $mailAttachments=null)
+    public function sendMessage($templateName, $context, $toEmail, array $mailAttachments = null)
     {
         $template = $this->twig->loadTemplate($templateName);
         /* @var $template \Twig_Template */
-        $context = array_merge($template->getEnvironment()->getGlobals(), $this->twig->mergeGlobals($context));
+        $context = array_merge($this->twig->getGlobals(), $this->twig->mergeGlobals($context));
+
         $subject = $template->renderBlock('subject', $context);
-        $template->renderBlock('body_text', $context);
+        $textBody = $template->renderBlock('body_text', $context);
         $htmlBody = $template->renderBlock('body_html', $context);
 
-        $swiftInstance=\Swift_Message::newInstance();
+        $swiftInstance = \Swift_Message::newInstance();
         $message = $swiftInstance
             ->setSubject($subject)
             ->setFrom($this->fromEmail)
             ->setTo($toEmail)
-            ->setBody($htmlBody, 'text/html')
-            ->setBody(
-                $this->twig->render(
-                    $templateName, $context))
         ;
+        if (!empty($htmlBody)) {
+            $message->setBody( $this->twig->render(
+                $templateName, $context), 'text/html')
+                ->addPart($textBody, 'text/plain');
+        } else {
+            $message->setBody($textBody);
+        }
         if ($mailAttachments!=null) {
             foreach ($mailAttachments as $mailAttachment) {
                 $swiftInstance->attach($mailAttachment);
@@ -72,7 +76,6 @@ class MailerService
         if (isset($this->bccEmail)) {
             $message->addBcc($this->bccEmail);
         }
-
         $this->mailer->send($message);
     }
 }
