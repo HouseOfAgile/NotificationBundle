@@ -9,6 +9,7 @@ class NotificationEvent extends Event implements NotificationEventInterface {
 
     private $eventContext;
     private $mail;
+    private $locale;
 
 
 
@@ -38,5 +39,21 @@ class NotificationEvent extends Event implements NotificationEventInterface {
     public function setMail($mail)
     {
         $this->mail = $mail;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @param mixed $locale
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

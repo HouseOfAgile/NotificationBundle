@@ -42,11 +42,16 @@ class ExampleNotificationListener extends NotificationListener {
             'event' => $event->getEventContext()
         );
 
+        $attachments=array();
+        $locale='fr_FR';
+
         $this->logger->info('Send a Member mail of type ['.$event->getName().']');
         $this->mailerService->sendMessage(
             self::$emailTemplates[$event->getName()],
             $context,
-            $event->getNotificationOwner()->getEmail()
+            $event->getNotificationOwner()->getEmail(),
+            $attachments,
+            $locale
         );
     }
 

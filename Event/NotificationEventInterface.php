@@ -16,4 +16,6 @@ interface NotificationEventInterface {
     /* return the mail address to use in order to send mail notification */
     public function getMail();
 
+    /* return the locale used for the mail */
+    public function getLocale();
 }

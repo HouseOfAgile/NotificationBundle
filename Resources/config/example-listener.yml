@@ -7,4 +7,4 @@ services:
         class: "%hoa.listener.example.class%"
         tags:
           - { name: kernel.event_subscriber }
-        arguments: [ "@hoa.mailer", "@hoa.twilio.api", "@hoa.notification", "@logger"]
+        arguments: [ "@hoa.mailer", "@hoa.twilio.api", "@hoa.notification", "@logger","@translator"]
