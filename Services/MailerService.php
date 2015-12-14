@@ -45,7 +45,7 @@ class MailerService implements \Twig_Extension_GlobalsInterface
      * @param string $toEmail
      * @param array $mailAttachments (list of stwiftmail attachments)
      */
-    public function sendMessage($templateName, $context, $toEmail,array $mailAttachments=null)
+    public function sendMessage($templateName, $context, $toEmail, array $mailAttachments = null)
     {
         $template = $this->twig->loadTemplate($templateName);
         /* @var $template \Twig_Template */
@@ -59,21 +59,20 @@ class MailerService implements \Twig_Extension_GlobalsInterface
         $message = $swiftInstance
             ->setSubject($subject)
             ->setFrom($this->fromEmail)
-            ->setTo($toEmail)
-        ;
+            ->setTo($toEmail);
         if (!empty($htmlBody)) {
-            $message->setBody( $this->twig->render(
+            $message->setBody($this->twig->render(
                 $templateName, $context), 'text/html')
                 ->addPart($textBody, 'text/plain');
         } else {
             $message->setBody($textBody);
         }
 
-        if (isset($this->bccEmail)) {
+        if (isset($this->bccEmail) && $this->bccEmail != $toEmail) {
             $message->addBcc($this->bccEmail);
         }
-        if ($mailAttachments!=null and count($mailAttachments)>0) {
-            foreach ($mailAttachments as $mailAttachment){
+        if ($mailAttachments != null and count($mailAttachments) > 0) {
+            foreach ($mailAttachments as $mailAttachment) {
                 $message->attach($mailAttachment);
             }
         }
