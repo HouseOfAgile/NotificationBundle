@@ -22,7 +22,7 @@
         "MIT"
     ],
     "require" : {
-        "twilio/sdk": ">=3.10.0",
+        "twilio/sdk": "~4",
         "symfony/dependency-injection": "~2.7",
         "symfony/event-dispatcher": "~2.7",
         "symfony/monolog-bridge": "~2.7"
