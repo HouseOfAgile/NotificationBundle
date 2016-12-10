@@ -31,8 +31,8 @@ class HOANotificationExtension extends Extension
             $container->setParameter('hoa_notification.sms_service.active',false);
             $container->setParameter('hoa_notification.sms_service.twilio',null);
         }
-        $container->setParameter('hoa_notification.mailer_service.hoa_from_email', $config['mailer_service']['hoa_from_email']);
-        $container->setParameter('hoa_notification.mailer_service.hoa_bcc_email', $config['mailer_service']['hoa_bcc_email']);
+        $container->setParameter('hoa_notification.mailer_service.from_email', $config['mailer_service']['from_email']);
+        $container->setParameter('hoa_notification.mailer_service.bcc_email', $config['mailer_service']['bcc_email']);
 
         $loader->load('services.yml');
     }

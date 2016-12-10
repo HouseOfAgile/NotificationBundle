@@ -10,7 +10,7 @@ services:
 
     hoa.mailer:
       class: %hoa.mailer_service.class%
-      arguments: ["@mailer", "@twig", "%hoa_notification.mailer_service.hoa_from_email%","%hoa_notification.mailer_service.hoa_bcc_email%"]
+      arguments: ["@mailer", "@twig", "%hoa_notification.mailer_service.from_email%","%hoa_notification.mailer_service.bcc_email%"]
 
     hoa.notification:
         class: %hoa.notification_service.class%

@@ -12,7 +12,8 @@ use Symfony\Bridge\Monolog\Logger;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\TranslatorInterface;
 
-abstract class NotificationListener implements NotificationListenerInterface, EventSubscriberInterface {
+abstract class NotificationListener implements NotificationListenerInterface, EventSubscriberInterface
+{
 
     /**
      * @var $mailer MailerService
@@ -45,7 +46,7 @@ abstract class NotificationListener implements NotificationListenerInterface, Ev
         $this->logger = $logger;
         $this->twilioService = $twilioService;
         $this->notificationService = $notificationService;
-        $this->translator= $translator;
+        $this->translator = $translator;
     }
 
 }
